@@ -13,7 +13,7 @@ class TaskList:
     def getTasks(self):
         return self.list
 
-    def makeTask(self, task):
+    def makeTask(self,task): # self, task
         self.list.append(task)
 
     def delTask(self, index):
