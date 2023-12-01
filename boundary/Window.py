@@ -9,20 +9,27 @@ from entity.Task import Task
 
 class Window:
     def __init__(self):
-        # Task List Creation
         self.list = TaskList()
-
-        # Regular GUI creation stuff that reflects our PD1
         self.root = Tk()
         self.root.title("Dragon Taska'")
         self.label = Label(self.root, text="Taska'")
+        self.root.minsize(600, 900)
+        self.root.config(bg="#D2B48C")
+
+        self.color_options = ["lightblue", "#D2B48C", "pink", "grey"]
+        self.current_color_index = 0
 
         # Button widgets
+        self.change_color = Button(self.root, text="Change Color", command=self.changeColor)
         self.add = Button(self.root, text="Add", command=self.openDialog)
 
         # pack the widgets into the window
         self.label.pack(pady=10)
-        self.add.pack(pady=10)
+
+        # Centered add button in the bottom right corner
+        self.add.pack(side="right", anchor="se", pady=10, padx=10)
+        # Centered change_color button to the left of add button
+        self.change_color.pack(side="right", anchor="se", pady=10, padx=5)
 
     def addToList(self, task):
         self.list.makeTask(task)
@@ -32,21 +39,23 @@ class Window:
         self.cancel = Button(self.root, text="Cancel", command=self.destroyElements)
         self.submit = Button(self.root, text="Submit", command=self.submitTask)
   
+
+        self.cancel.pack(side="right", anchor="ne", pady=10, padx=10)
+        self.submit.pack(side="right", anchor="ne", pady=10, padx=10)
+
         # Entry Widgets
         self.title = Entry(self.root, font=("Arial", 12))
-        self.title.pack(side=LEFT)
+        self.title.pack(side="left")
         self.category = Entry(self.root, font=("Arial", 12))
-        self.category.pack(side=LEFT)
+        self.category.pack(side="left")
         self.description = Entry(self.root, font=("Arial", 12))
-        self.description.pack(side=LEFT)
+        self.description.pack(side="left")
         self.date = Entry(self.root, font=("Arial", 12))
-        self.date.pack(side=LEFT)
+        self.date.pack(side="left")
         
 
         # pack the widgets into the window
         self.label.pack(pady=10)
-        self.cancel.pack(pady=10)
-        self.submit.pack(pady=10)
 
     def submitTask(self):
         myTask = Task(self.title.get(),         # create task object and get all the input
@@ -76,7 +85,7 @@ class Window:
         # delete any elements on screen
         for widget in self.root.winfo_children():
             if isinstance(widget, (Button, Label)):
-                if widget.cget("text") != "Taska'" and widget.cget("text") != "Add":
+                if widget.cget("text") != "Taska'" and widget.cget("text") != "Add" and widget.cget("text") != "Change Color":
                     widget.destroy()
 
         # re print elements on screen
@@ -92,6 +101,17 @@ class Window:
     def delete_task(self, myList, index):
         myList.delTask(index)
         self.show_taskList(myList)
+
+    def changeColor(self):
+
+        # Get the next color from the list
+        next_color = self.color_options[self.current_color_index]
+
+        # Increment the color index for the next cycle
+        self.current_color_index = (self.current_color_index + 1) % len(self.color_options)
+
+        # Change the background color of the window
+        self.root.config(bg=next_color)
 
 
 
