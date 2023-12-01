@@ -25,20 +25,23 @@ class Window:
 
         # pack the widgets into the window
         self.label.pack(pady=10)
-
-        # Centered add button in the bottom right corner
-        self.add.pack(side="right", anchor="se", pady=10, padx=10)
         # Centered change_color button to the left of add button
         self.change_color.pack(side="right", anchor="se", pady=10, padx=5)
+        
+        # Centered add button in the bottom right corner
+        self.add.pack(side="right", anchor="se", pady=10, padx=10)
+        
 
     def addToList(self, task):
         self.list.makeTask(task)
 
     def openDialog(self):
+        # Hide the add button to stop potential double clicks
+        self.add.pack_forget()
+
         # Button Widgets
         self.cancel = Button(self.root, text="Cancel", command=self.destroyElements)
         self.submit = Button(self.root, text="Submit", command=self.submitTask)
-  
 
         self.cancel.pack(side="right", anchor="ne", pady=10, padx=10)
         self.submit.pack(side="right", anchor="ne", pady=10, padx=10)
@@ -64,6 +67,9 @@ class Window:
                        self.date.get())
         self.list.makeTask(myTask)              # add to the task list
         self.destroyElements()
+
+        # re pack the button
+        self.add.pack(side="right", anchor="se", pady=10, padx=10)
         
     def destroyElements(self):
         self.title.destroy()
@@ -113,9 +119,3 @@ class Window:
         # Change the background color of the window
         self.root.config(bg=next_color)
 
-
-
-#      Enter info into window
-#      Display all of the tasks in TASK LIST
-#      Add to the TASK LIST 
-#      Enter info into window
