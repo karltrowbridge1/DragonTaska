@@ -94,7 +94,7 @@ class Window:
             label.pack()
 
             # create a delete button for each label
-            formatedtxt = ("Delete task:" + str(idx+1))
+            formatedtxt = ("Delete task: " + str(idx+1))
             delete_button = Button(self.root, text=formatedtxt, command=lambda index=idx: self.delete_task(myList, idx))
             delete_button.pack()
     
