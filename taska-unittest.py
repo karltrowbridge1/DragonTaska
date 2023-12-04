@@ -5,9 +5,14 @@ from entity.TaskList import TaskList
 class TestTaskApplication(unittest.TestCase):
     
     def test_taskAdd(self):
+        # Create Task and Task List Objects
         testTask = Task("Test title", "Test category", "Test description", "Test date")
         testList = TaskList()
+
+        # Add Tasks to the list
         testList.makeTask(testTask)
+
+        # Get the Taks back and verify contents
         returnedList = testList.getTasks()
         exceptedOutput = "('Test title', 'Test category', 'Test description', 'Test date')"     
         self.assertEqual(str(returnedList[0].getTask()), exceptedOutput)
