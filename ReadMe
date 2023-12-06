@@ -15,6 +15,7 @@ This Python application is a basic to-do list app built with Python 3.11 and Tki
 2. Clone this repository to your local machine.
    ```bash
    git clone https://github.com/karltrowbridge1/Code.git
+```
 3. Run main.py
 
 
