@@ -131,6 +131,7 @@ class Window:
         self.submit.destroy()
         self.show_taskList(self.list)
         
+        self.add.pack(side="right", anchor="se", pady=10, padx=10)
         
         
     def show_window(self):
