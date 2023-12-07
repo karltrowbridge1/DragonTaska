@@ -56,6 +56,57 @@ class Window:
         self.date = Entry(self.root, font=("Arial", 12))
         self.date.pack(side="left")
         
+          # Enter descriptive text into the entry boxes
+        self.title.insert(0, "title")
+        self.category.insert(0, "category")
+        self.description.insert(0, "description")
+        self.date.insert(0, "date")
+
+        # Define entry_clear_title
+        def entry_clear_title(e):
+            if self.title.get() == 'title':
+                self.title.delete(0, END)
+
+        # Define entry_clear_category
+        def entry_clear_category(e):
+            if self.category.get() == 'category':
+                self.category.delete(0, END)
+        
+        # Define entry_clear_description
+        def entry_clear_description(e):
+            if self.description.get() == 'description':
+                self.description.delete(0, END)
+        
+        # Define entry_clear_date
+        def entry_clear_date(e):
+            if self.date.get() == 'date':
+                self.date.delete(0, END)
+                
+        # Bind the entry boxes
+        self.title.bind("<Button-1>",entry_clear_title)
+        self.category.bind("<Button-1>", entry_clear_category)
+        self.description.bind("<Button-1>", entry_clear_description)
+        self.date.bind("<Button-1>", entry_clear_date)
+
+        # Define entry_add_title
+        def entry_add_date(e):
+            if self.title.get() == '':
+                self.title.insert(0, "title", END)
+            
+        # Define entry_add_category
+        def entry_add_category(e):
+            if self.cateory.get() == '':
+                self.category.insert(0, "category", END)
+
+        # Define entry_add_description
+        def entry_add_description(e):
+            if self.description.get() == '':
+                self.description.insert(0, "description", END)
+
+        # Define entry_add_date
+        def entry_add_date(e):
+            if self.date.get() == '':
+                self.date.insert(0, "date", END)
 
         # pack the widgets into the window
         self.label.pack(pady=10)
