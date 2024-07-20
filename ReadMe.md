@@ -1,7 +1,8 @@
 # Dragon Taska 
 
 ## Overview
-This Python application is a basic to-do list app built with Python 3.11 and Tkinter. It allows users to manage tasks by adding up to four items at a time, each with a title, category, description, and date. The app also provides additional features such as changing the color of the screen, canceling a task, adjusting the screen size, and submitting a task.
+This Python application is a basic to-do list app built with Python 3.11 and Tkinter written for a software engineering class. Emphasis was put on the process of making the product rather than the product itself.
+It allows users to manage tasks by adding up to four items at a time, each with a title, category, description, and date. The app also provides additional features such as changing the color of the screen, canceling a task, adjusting the screen size, and submitting a task.
 
 ## Features
 - Add up to 4 items to the to-do list with title, category, description, and date fields.
